@@ -1,4 +1,6 @@
-function start (){
+import * as bootstrap from "bootstrap";
+
+function start(){
     const toastTrigger = document.getElementById('liveToastBtn')
     const toastLiveExample = document.getElementById('liveToast')
     
@@ -9,5 +11,3 @@ function start (){
       })
     }
 }
-
-export {start}

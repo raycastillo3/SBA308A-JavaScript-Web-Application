@@ -5,8 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build index.html",
-    "clean": "rm -rf .parcel-cache"
+    "build": "parcel build index.html"
   },
   "dependencies": {
     "@popperjs/core": "2.11.7",
