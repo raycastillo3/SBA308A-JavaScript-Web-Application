@@ -1,9 +1,11 @@
 import * as Toasts from "./Toasts.js";
 import axios from "axios";
 
-const toasts = document.getElementById("liveToast"); 
+const btn = document.getElementById("liveToastBtn"); 
 
-
-Toasts.start(); 
-
-console.log(toasts);
+function initialLoad (){
+    if (btn){
+        Toasts.start();
+    }
+}
+initialLoad();
