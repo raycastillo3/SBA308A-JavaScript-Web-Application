@@ -11,3 +11,5 @@ function start(){
       })
     }
 }
+
+export {start}
