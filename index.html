@@ -29,29 +29,50 @@
 
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-   
   </head>
 
   <body>
-     <!-- Toasts -->
-     <button type="button" class="btn btn-primary" id="liveToastBtn">Get a quote!</button>
-     
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header">
-            <!-- <img src="..." class="rounded me-2" alt="..."> -->
-            <strong class="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-          </div>
-          <div class="toast-body">
-            Hello, world! This is a toast message.
+    <div class="container">
+      <div class="container-items">
+        <!-- button -->
+        <button type="button" class="btn btn-primary" id="liveToastBtn" data-bs-toggle="modal" data-bs-target="#quoteModal">Add Quote</button>
+        <!-- modal -->
+        <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="quoteModalLabel">Add a New Quote</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="quoteForm">
+                  <div class="mb-3">
+                    <label for="authorName" class="form-label">Author Name</label>
+                    <input type="text" class="form-control" id="authorName" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="quoteText" class="form-label">Quote</label>
+                    <textarea class="form-control" id="quoteText" rows="3" required></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="submitQuoteBtn">Submit Quote</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
+        <!-- dropdown  -->
+        <select class="form-select mt-3" id="quoteDropdown" aria-label="Quote selection">
+          <option selected>Select a quote</option>
+        </select>
       </div>
+      <!-- Toast -->
+      <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="top: 50px;">
+      </div>
+    </div>
   </body>
-   <!--Scripts -->
-   <script type="text/javascript" src="Toasts.js"></script>
-   <script type="text/javascript" src="index.js"></script>
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="Toasts.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="api.js"></script>
 </html>

@@ -1,8 +1,30 @@
-html,
-body {
+body, html {
+  background-color: white;
   height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-body {
-  background-color: white;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container-items {
+  text-align: center;
+}
+
+.toast-container {
+  position: relative;
+  top: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+#liveToastBtn, #quoteDropdown {
+  width: 200px;
 }
