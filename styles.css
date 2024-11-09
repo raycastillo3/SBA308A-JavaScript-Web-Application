@@ -5,6 +5,7 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .container {
@@ -30,4 +31,48 @@ body, html {
 }
 #quoteDropdown {
   width: 400px;
+}
+
+
+.quote-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.quote {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  width: 250px;
+  text-align: center;
+  opacity: 0.5;
+  animation: float 20s infinite;
+}
+
+.quote:nth-child(1) { left: 10%; animation-duration: 25s; }
+.quote:nth-child(2) { left: 30%; animation-duration: 28s; }
+.quote:nth-child(3) { left: 50%; animation-duration: 24s; }
+.quote:nth-child(4) { left: 70%; animation-duration: 26s; }
+.quote:nth-child(5) { left: 90%; animation-duration: 27s; }
+
+@keyframes float {
+  0% {
+      transform: translateY(100vh);
+      opacity: 0.3;
+  }
+  50% {
+      transform: translateY(-50vh);
+      opacity: 0.6;
+  }
+  100% {
+      transform: translateY(100vh);
+      opacity: 0.3;
+  }
 }
