@@ -1,14 +1,18 @@
 import * as bootstrap from "bootstrap";
+import { getQuote } from "./api";
 
-function start(){
-    const toastTrigger = document.getElementById('liveToastBtn');
-    const toastLiveExample = document.getElementById('liveToast');
-    
+async function start(){
+  const toastTrigger = document.getElementById('liveToastBtnRandomQuote')
+  const toastLiveExample = document.getElementById('liveToast')
+  
+  if (toastTrigger){
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-    toastTrigger.addEventListener('click', () => {
-    toastBootstrap.show();
+    toastTrigger.addEventListener('click', async () => {
+      await getQuote();
+      toastBootstrap.show()
     })
-    
+  }
+ 
 }
 
 export {start}

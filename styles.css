@@ -25,6 +25,9 @@ body, html {
   max-width: 400px;
 }
 
-#liveToastBtn, #quoteDropdown {
+#liveToastBtn, #liveToastBtnRandomQuote {
   width: 200px;
+}
+#quoteDropdown {
+  width: 400px;
 }

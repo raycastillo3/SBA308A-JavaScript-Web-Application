@@ -10,7 +10,7 @@ const API_HEADERS = {
 export async function getTags() {
   try {
     const response = await axios.get('https://favqs.com/api/quotes', API_HEADERS);
-    const tags = response.data.quote.tags;
+    const tags = response.data.quotes.tags;
 
     const dropdown = document.getElementById('quoteDropdown');
     dropdown.innerHTML = '<option selected>Select a quote</option>';
@@ -29,12 +29,12 @@ export async function getTags() {
       }
     });
 
-  } catch (error) {
-    console.error('Error fetching tags:', error);
+  } catch (err) {
+    console.error('Error fetching tags:', err);
   }
 };
 
-async function displayQuotesByTag (tag) {
+async function displayQuotesByTag(tag) {
   try {
     const response = await axios.get(`https://favqs.com/api/quotes/`, API_HEADERS);
     const quotes = response.data.quotes.slice(0, 5);
@@ -61,8 +61,8 @@ async function displayQuotesByTag (tag) {
       `;
       toastContainer.appendChild(toast);
     });
-  } catch (error) {
-    console.error('Error fetching quotes:', error);
+  } catch (err) {
+    console.error('Error fetching quotes:', err);
   }
 };
 
@@ -87,7 +87,40 @@ export async function submitQuote (author, quote) {
     );
     console.log('Quote added successfully:', response.data);
     return response.data;
-  } catch (error) {
-    console.error('Error adding quote:', error);
+  } catch (err) {
+    console.error('Error adding quote:', err);
   }
 };
+
+export async function getQuote (){
+    try {
+        //commented this because API need to be authenticated by CORS
+        // const response = await axios.get(`https://favqs.com/api/quotes/`)
+        // let randomIdx = Math.floor(Math.random() * response.data.quotes.length);
+        // const quote = response.data.quotes[randomIdx]; 
+        const randomQuoteToast = document.getElementById("random-quote-toast-container");
+        randomQuoteToast.innerHTML = '';
+          
+          // console.log(quote);
+          // quote.author
+          // quote.body
+          const toast = document.createElement('div');
+          toast.className = 'toast show';
+          toast.role = 'alert';
+          toast.setAttribute('aria-live', 'assertive');
+          toast.setAttribute('aria-atomic', 'true');
+      
+          toast.innerHTML = `
+        <div class="toast-header">
+          <strong class="me-auto">Oprah W</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+         “Create the highest, grandest vision possible for your life because you become what you believe.”
+        </div>
+      `;
+        randomQuoteToast.appendChild(toast);
+    } catch (err) {
+        console.error(err);
+    }
+}
