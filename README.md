@@ -4,7 +4,7 @@ This is a simple JS project that uses an API to get random quotes. This app allo
 ### How to use:
 * Click the __Random Quote__ button to get a random quote
 * Select a theme from the __dropdown menu__ to get a list of quotes based on the selected option
-* Add your own quote by clicking the add quote button
+* Add your own quote by clicking the __Add Quote__ button
 
 ## How to run: 
 In terminal run install dependencies by `npm install`. Then `npm start`
