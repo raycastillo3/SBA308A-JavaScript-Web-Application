@@ -6,20 +6,24 @@ const API_HEADERS = {
         'Content-Type': 'application/json'
     }
 };
-
+const testURL = "https://76431f32-72ff-43f1-b1dd-777c89dbf976.mock.pstmn.io/getQuotes";
 export async function getTags() {
   try {
-    const response = await axios.get('https://favqs.com/api/quotes', API_HEADERS);
-    const tags = response.data.quotes.tags;
-
+    const response = await axios.get(testURL);
+    // console.log(response.data.quotes);
+    const tagsArr = response.data.quotes;
+    // console.log(tags);
     const dropdown = document.getElementById('quoteDropdown');
     dropdown.innerHTML = '<option selected>Select a quote</option>';
-
-    tags.forEach(tag => {
-      const option = document.createElement('option');
-      option.value = tag;
-      option.textContent = tag;
-      dropdown.appendChild(option);
+    tagsArr.forEach(tags => {
+    // console.log(tags.tags);
+      tags.tags.forEach(tag => {
+        // console.log(tag);
+        const option = document.createElement('option');
+        option.value = tag;
+        option.textContent = tag;
+        dropdown.appendChild(option);
+      });
     });
 
     dropdown.addEventListener('change', async (event) => {
@@ -28,15 +32,13 @@ export async function getTags() {
         await displayQuotesByTag(selectedTag);
       }
     });
-
   } catch (err) {
     console.error('Error fetching tags:', err);
   }
 };
-
 async function displayQuotesByTag(tag) {
   try {
-    const response = await axios.get(`https://favqs.com/api/quotes/`, API_HEADERS);
+    const response = await axios.get(testURL);
     const quotes = response.data.quotes.slice(0, 5);
 
     const toastContainer = document.querySelector('.toast-container');
@@ -66,12 +68,12 @@ async function displayQuotesByTag(tag) {
   }
 };
 
-const API_URL = 'https://favqs.com/api/quotes';
+// const API_URL = 'https://favqs.com/api/quotes';
 
 export async function submitQuote (author, quote) {
   try {
     const response = await axios.post(
-      API_URL,
+      testURL,
       {
         quote: {
           author: author,

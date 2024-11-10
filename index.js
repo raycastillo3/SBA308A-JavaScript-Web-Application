@@ -7,7 +7,6 @@ async function initialLoad (){
 }
 initialLoad();
 
-
 const submitQuoteBtn = document.getElementById('submitQuoteBtn')
 
 submitQuoteBtn.addEventListener('click', async () => {
