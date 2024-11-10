@@ -64,7 +64,7 @@ body, html {
 .quote:nth-child(2) { left: 30%; animation-duration: 28s; }
 .quote:nth-child(3) { left: 50%; animation-duration: 24s; }
 .quote:nth-child(4) { left: 70%; animation-duration: 26s; }
-.quote:nth-child(5) { left: 90%; animation-duration: 27s; }
+.quote:nth-child(5) { left: 80%; animation-duration: 27s; }
 
 @keyframes float {
   0% {

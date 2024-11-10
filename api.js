@@ -87,7 +87,7 @@ export async function submitQuote (author, quote) {
         }
       }
     );
-    console.log('Quote added successfully:', response.data);
+    console.info('Quote added successfully:', response.data);
     return response.data;
   } catch (err) {
     console.error('Error adding quote:', err);
@@ -96,13 +96,12 @@ export async function submitQuote (author, quote) {
 
 export async function getQuote (){
     try {
-        //commented this because API need to be authenticated by CORS
-        // const response = await axios.get(`https://favqs.com/api/quotes/`)
-        // let randomIdx = Math.floor(Math.random() * response.data.quotes.length);
-        // const quote = response.data.quotes[randomIdx]; 
+        const response = await axios.get(testURL)
+        let randomIdx = Math.floor(Math.random() * response.data.quotes.length);
+        const quote = response.data.quotes[randomIdx]; 
+        console.log(quote);
         const randomQuoteToast = document.getElementById("random-quote-toast-container");
         randomQuoteToast.innerHTML = '';
-          
           // console.log(quote);
           // quote.author
           // quote.body
@@ -114,11 +113,12 @@ export async function getQuote (){
       
           toast.innerHTML = `
         <div class="toast-header">
-          <strong class="me-auto">Oprah W</strong>
+          <strong class="me-auto">${quote.author}</strong>
+          <small class="text-muted">Quote ${randomIdx}</small>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body">
-         “Create the highest, grandest vision possible for your life because you become what you believe.”
+         ${quote.body}
         </div>
       `;
         randomQuoteToast.appendChild(toast);
