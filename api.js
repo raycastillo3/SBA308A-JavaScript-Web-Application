@@ -39,8 +39,8 @@ export async function getTags() {
 async function displayQuotesByTag(tag) {
   try {
     const response = await axios.get(testURL);
-    const quotes = response.data.quotes.slice(0, 5);
-
+    const quotes = shuffleQuote(response.data.quotes, tag);
+    
     const toastContainer = document.querySelector('.toast-container');
     toastContainer.innerHTML = '';
 
@@ -68,6 +68,15 @@ async function displayQuotesByTag(tag) {
   }
 };
 
+function shuffleQuote(arrOfQuotes, theme){
+  const quotes = []
+  arrOfQuotes.forEach(quote => quote.tags.filter(item => {
+    if (item.includes(theme)){
+      quotes.push(quote);
+    }}))
+  // console.log(quotes);
+  return quotes;
+}
 // const API_URL = 'https://favqs.com/api/quotes';
 
 export async function submitQuote (author, quote) {
